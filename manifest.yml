@@ -5,7 +5,7 @@ modules:
       render: native
       resolver:
         function: resolver
-      title: Test App
+      title: Retro Lights
       route: test-app
   function:
     - key: resolver
@@ -20,10 +20,3 @@ app:
 permissions:
   scopes:
     - storage:app
-  external:
-    images:
-      - "./lights_1.png"
-      - "./lights_2.png"
-      - "./lights_3.png"
-      - "./lights_4.png"
-      - "./lights_5.png"

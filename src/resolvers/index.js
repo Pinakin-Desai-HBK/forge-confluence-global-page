@@ -33,23 +33,12 @@ resolver.define("getData", async () => {
   }
 });
 
-resolver.define("setData", async () => {
-  const newData = {
-    teamHealth: {
-      Delivering_Value: 5,
-      Easy_To_Release: 2,
-      Fun: 1,
-      Health_Of_Codebase: 4,
-      Learning: 3,
-      Mission: 2,
-      Pawns_Or_Players: 3,
-      Speed: 5,
-      Way_Of_Working: 4,
-      Support: 1,
-      Teamwork: 2
-    }
-  };
-  await storage.set("data", newData);
+resolver.define("setData", async ({ payload }) => {
+  await storage.set("data", payload);
+});
+
+resolver.define("blah", async ({ payload }) => {
+  return payload;
 });
 
 export const handler = resolver.getDefinitions();
