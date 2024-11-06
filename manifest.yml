@@ -1,0 +1,29 @@
+modules:
+  confluence:globalPage:
+    - key: forge-confluence-global-page-test-app-global-page
+      resource: main
+      render: native
+      resolver:
+        function: resolver
+      title: Test App
+      route: test-app
+  function:
+    - key: resolver
+      handler: index.handler
+resources:
+  - key: main
+    path: src/frontend/index.jsx
+app:
+  runtime:
+    name: nodejs20.x
+  id: ari:cloud:ecosystem::app/85f170e4-2db9-4c56-843f-e042d5cec1bb
+permissions:
+  scopes:
+    - storage:app
+  external:
+    images:
+      - "./lights_1.png"
+      - "./lights_2.png"
+      - "./lights_3.png"
+      - "./lights_4.png"
+      - "./lights_5.png"
