@@ -37,8 +37,4 @@ resolver.define("setData", async ({ payload }) => {
   await storage.set("data", payload);
 });
 
-resolver.define("blah", async ({ payload }) => {
-  return payload;
-});
-
 export const handler = resolver.getDefinitions();

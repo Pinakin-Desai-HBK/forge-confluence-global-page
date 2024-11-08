@@ -1,54 +1,21 @@
 import React, { useEffect, useState } from "react";
-import ForgeReconciler, { Box, Button, Heading, Inline, Stack, Strong, Text, xcss } from "@forge/react";
+import ForgeReconciler, { Box, Button, Heading, Inline, Stack, Strong, Text } from "@forge/react";
 import { invoke } from "@forge/bridge";
-
-/* Border */
-const allBorder = {
-  borderColor: "color.border.discovery",
-  borderWidth: "border.width",
-  borderStyle: "solid"
-};
-
-/* Styles */
-const rowStyle = xcss({ ...allBorder, padding: "space.100", marginBottom: "space.200", width: "600px" });
-const labelStyle = xcss({ width: "160px", padding: "space.100" });
-const valueStyle = xcss({ width: "40px", padding: "space.100" });
-const updateStyle = xcss({ marginTop: "space.200" });
-const totalPadding1Style = xcss({ width: "153px" });
-const totalPadding2Style = xcss({ width: "118px" });
-
-/* Traffic Lights */
-const styleTrafficLightsContainer = xcss({
-  backgroundColor: "color.background.accent.teal.bolder.pressed",
-  borderRadius: "border.radius",
-  padding: "space.050"
-});
-const trafficLightBase = { width: "20px", height: "20px", borderRadius: "border.radius" };
-
-const styleRedOn = xcss({
-  ...trafficLightBase,
-  backgroundColor: "color.background.accent.red.subtle"
-});
-const styleRedOff = xcss({
-  ...trafficLightBase,
-  backgroundColor: "color.background.accent.red.bolder.pressed"
-});
-const styleGreenOn = xcss({
-  ...trafficLightBase,
-  backgroundColor: "color.background.accent.lime.subtle"
-});
-const styleGreenOff = xcss({
-  ...trafficLightBase,
-  backgroundColor: "color.background.accent.lime.bolder.pressed"
-});
-const styleOrangeOn = xcss({
-  ...trafficLightBase,
-  backgroundColor: "color.background.accent.orange.subtle"
-});
-const styleOrangeOff = xcss({
-  ...trafficLightBase,
-  backgroundColor: "color.background.accent.orange.bolder.pressed"
-});
+import {
+  rowStyle,
+  labelStyle,
+  valueStyle,
+  updateStyle,
+  totalPadding1Style,
+  totalPadding2Style,
+  styleTrafficLightsContainer,
+  styleRedOn,
+  styleRedOff,
+  styleGreenOn,
+  styleGreenOff,
+  styleOrangeOn,
+  styleOrangeOff
+} from "./styles";
 
 const TrafficLights = ({ value }) => {
   return (
@@ -68,6 +35,7 @@ const App = () => {
 
   const changeNewValue = (key, increase) => {
     let newValue = 0;
+
     if (increase && newData.teamHealth[key] !== 5) {
       newValue = newData.teamHealth[key] + 1;
     } else if (!increase && newData.teamHealth[key] !== 0) {
