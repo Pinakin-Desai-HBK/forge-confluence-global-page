@@ -8,9 +8,8 @@ const allBorder = {
 };
 
 /* Styles */
-export const rowStyle = xcss({ ...allBorder, padding: "space.100", marginBottom: "space.200", width: "500px" });
+export const rowStyle = xcss({ ...allBorder, padding: "space.100", marginBottom: "space.200", width: "530px" });
 export const labelStyle = xcss({ width: "160px", padding: "space.100" });
-export const valueStyle = xcss({ width: "40px", padding: "space.100" });
 export const updateStyle = xcss({ marginTop: "space.200" });
 export const totalPadding1Style = xcss({ width: "153px" });
 export const totalPadding2Style = xcss({ width: "118px" });
@@ -52,3 +51,19 @@ export const styleOrangeOff = xcss({
 });
 
 /* Change */
+const valueBase = { marginRight: "space.400", padding: "space.100", borderRadius: "border.radius" };
+
+export const styleValueWorse = xcss({
+  ...valueBase,
+  backgroundColor: "color.background.accent.red.subtler"
+});
+
+export const styleValueBetter = xcss({
+  ...valueBase,
+  backgroundColor: "color.background.accent.green.subtler"
+});
+
+export const styleValueSame = xcss({
+  ...valueBase,
+  backgroundColor: "color.background.accent.gray.subtler"
+});

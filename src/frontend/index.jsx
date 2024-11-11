@@ -4,7 +4,6 @@ import { invoke } from "@forge/bridge";
 import {
   rowStyle,
   labelStyle,
-  valueStyle,
   updateStyle,
   totalPadding1Style,
   totalPadding2Style,
@@ -14,7 +13,10 @@ import {
   styleGreenOn,
   styleGreenOff,
   styleOrangeOn,
-  styleOrangeOff
+  styleOrangeOff,
+  styleValueWorse,
+  styleValueBetter,
+  styleValueSame
 } from "./styles";
 
 const TrafficLights = ({ value }) => {
@@ -53,6 +55,16 @@ const App = () => {
     }
   };
 
+  const getValueStyle = (key) => {
+    if (newData.teamHealth[key] > data.teamHealth[key]) {
+      return styleValueBetter;
+    } else if (newData.teamHealth[key] < data.teamHealth[key]) {
+      return styleValueWorse;
+    } else {
+      return styleValueSame;
+    }
+  };
+
   useEffect(() => {
     invoke("getData").then((data) => {
       console.log(data);
@@ -72,17 +84,17 @@ const App = () => {
                   <Heading as="h4">{key.replaceAll("_", " ")}</Heading>
                 </Box>
                 <TrafficLights value={data.teamHealth[key]}></TrafficLights>
-                <Box xcss={valueStyle} alignBlock="center">
+                <Box xcss={styleValueSame} alignBlock="center">
                   <Text>{data.teamHealth[key]}</Text>
                 </Box>
-                <Button onClick={() => changeNewValue(key, true)}>+</Button>
-                <Button onClick={() => changeNewValue(key, false)}>-</Button>
                 <TrafficLights value={newData.teamHealth[key]}></TrafficLights>
-                <Box xcss={valueStyle} alignBlock="center">
+                <Box xcss={getValueStyle(key)} alignBlock="center">
                   <Text>
                     <Strong>{newData.teamHealth[key]}</Strong>
                   </Text>
                 </Box>
+                <Button onClick={() => changeNewValue(key, true)}>+</Button>
+                <Button onClick={() => changeNewValue(key, false)}>-</Button>
               </Inline>
             </Box>
           ))}
